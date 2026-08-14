@@ -1,0 +1,310 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Do You Like Me? ❤️</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            overflow: hidden;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 550px;
+            text-align: center;
+            padding: 45px 25px;
+            background: rgba(255, 255, 255, 0.92);
+            border-radius: 30px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            font-size: 42px;
+            color: #ff4f70;
+            margin-bottom: 15px;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            color: #555;
+            margin-bottom: 35px;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 25px;
+            min-height: 100px;
+            flex-wrap: wrap;
+        }
+
+        button {
+            border: none;
+            border-radius: 50px;
+            padding: 15px 35px;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        #yesBtn {
+            background: #ff4f70;
+            color: white;
+            box-shadow: 0 8px 20px rgba(255, 79, 112, 0.4);
+        }
+
+        #yesBtn:hover {
+            transform: scale(1.08);
+        }
+
+        #noBtn {
+            background: #eee;
+            color: #555;
+        }
+
+        #noBtn:hover {
+            transform: scale(0.95);
+        }
+
+        #message {
+            margin-top: 25px;
+            min-height: 30px;
+            font-size: 20px;
+            font-weight: bold;
+            color: #ff4f70;
+        }
+
+        .success {
+            display: none;
+        }
+
+        .success h2 {
+            font-size: 42px;
+            color: #ff4f70;
+            margin-bottom: 15px;
+            animation: pop 0.6s ease;
+        }
+
+        .heart {
+            font-size: 80px;
+            animation: heartbeat 1s infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.25);
+            }
+        }
+
+        @keyframes pop {
+            0% {
+                transform: scale(0);
+            }
+            80% {
+                transform: scale(1.15);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .floating-heart {
+            position: absolute;
+            bottom: -50px;
+            font-size: 25px;
+            animation: floatUp linear infinite;
+            opacity: 0.7;
+        }
+
+        @keyframes floatUp {
+            from {
+                transform: translateY(0);
+                opacity: 0;
+            }
+
+            20% {
+                opacity: 0.7;
+            }
+
+            to {
+                transform: translateY(-110vh);
+                opacity: 0;
+            }
+        }
+
+        @media (max-width: 500px) {
+            h1 {
+                font-size: 32px;
+            }
+
+            .success h2 {
+                font-size: 32px;
+            }
+
+            .buttons {
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Floating hearts -->
+    <div class="floating-heart" style="left:10%; animation-duration:7s;">❤️</div>
+    <div class="floating-heart" style="left:25%; animation-duration:9s;">💕</div>
+    <div class="floating-heart" style="left:45%; animation-duration:6s;">💗</div>
+    <div class="floating-heart" style="left:65%; animation-duration:8s;">💖</div>
+    <div class="floating-heart" style="left:85%; animation-duration:10s;">❤️</div>
+
+    <div class="container">
+
+        <!-- Question Screen -->
+        <div id="questionScreen">
+
+            <h1>Do You Like Me? 👀</h1>
+
+            <p class="subtitle">
+                Be honest... there is only one correct answer 😏
+            </p>
+
+            <div class="buttons">
+
+                <button id="yesBtn" onclick="yesClicked()">
+                    Yes ❤️
+                </button>
+
+                <button id="noBtn" onclick="noClicked()">
+                    No 😐
+                </button>
+
+            </div>
+
+            <div id="message"></div>
+
+        </div>
+
+
+        <!-- Success Screen -->
+        <div class="success" id="successScreen">
+
+            <div class="heart">❤️</div>
+
+            <h2>I knew you like me! 😏</h2>
+
+            <p>Hehe... you couldn't escape the truth! 😂❤️</p>
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+        let yesSize = 20;
+        let noClicks = 0;
+
+        function noClicked() {
+
+            noClicks++;
+
+            const yesBtn = document.getElementById("yesBtn");
+            const message = document.getElementById("message");
+
+            // Make YES button bigger
+            yesSize += 12;
+
+            yesBtn.style.fontSize = yesSize + "px";
+            yesBtn.style.padding =
+                (15 + noClicks * 3) + "px " +
+                (35 + noClicks * 6) + "px";
+
+            // Different messages
+            const messages = [
+                "Wrong answer! 😜 Try again!",
+                "Are you sure? 🤨",
+                "Nice try! 😂",
+                "Nope! That's not allowed! 🚫",
+                "The button says YES! ❤️",
+                "You know the answer... 😏",
+                "STOP TRYING TO SAY NO! 😂",
+                "Just click YES already! ❤️"
+            ];
+
+            message.innerText =
+                messages[Math.min(noClicks - 1, messages.length - 1)];
+
+            // Shake the No button
+            const noBtn = document.getElementById("noBtn");
+
+            noBtn.animate(
+                [
+                    { transform: "translateX(0)" },
+                    { transform: "translateX(-10px)" },
+                    { transform: "translateX(10px)" },
+                    { transform: "translateX(-10px)" },
+                    { transform: "translateX(0)" }
+                ],
+                {
+                    duration: 400
+                }
+            );
+        }
+
+
+        function yesClicked() {
+
+            document.getElementById("questionScreen").style.display = "none";
+
+            document.getElementById("successScreen").style.display = "block";
+
+            // Extra hearts
+            for (let i = 0; i < 20; i++) {
+
+                const heart = document.createElement("div");
+
+                heart.innerHTML = "❤️";
+
+                heart.style.position = "fixed";
+                heart.style.left = Math.random() * 100 + "%";
+                heart.style.top = "100%";
+                heart.style.fontSize =
+                    (20 + Math.random() * 30) + "px";
+
+                heart.style.animation =
+                    `floatUp ${3 + Math.random() * 4}s linear`;
+
+                document.body.appendChild(heart);
+
+                setTimeout(() => {
+                    heart.remove();
+                }, 7000);
+            }
+        }
+
+    </script>
+
+</body>
+</html>
+```
