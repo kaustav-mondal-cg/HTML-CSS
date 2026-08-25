@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <label for="name">Name:</label>
+        <input type="test" id="name">
+    </form>
+<br>
+    <form action="">
+        <label for="name">Password:</label>
+        <input type="test" id="name">
+    </form>
+    <br>
+<form action="">
+     <label for="name">Place:</label>
+ <select name="Place">
+  <optgroup label="Local">
+    <option value="Kalol">Kalol</option>
+   
+  </optgroup>
+  <optgroup label="National">
+    <option value="Ahemdabad">Ahemdabad</option>
+     <option value="Delhi">Delhi</option>
+  </optgroup>
+</select>
+</form>
+<br>
+<button type="submit">Click here to submit</button>
+<br>
+<br>
+<form action="/submit" method="post"
+      enctype="application/x-www-form-urlencoded">
+  <input type="text" name="username">
+  <input type="email" name="email">
+
+  <button type="submit">Submit</button>
+</form>
+<br>
+<form method="post" enctype="multipart/form-data">
+  <input type="file" name="resume" accept=".pdf">
+
+  <button type="submit">Upload</button>
+</form>
+<br>
+<textarea name="message" rows="4" cols="50">Enter text here...</textarea>
+<br>
+<button type="button" onclick="alert('File has been submitted')">Click Me</button>
+<br>
+<fieldset>
+  <legend>Personal Info</legend>
+  <input type="text" name="name">
+</fieldset>
+<br>
+<fieldset>
+  <legend style="font-weight: bold;">Shipping Address</legend>
+  <input type="text" name="address">
+</fieldset>
+<br>
+<input list="browsers">
+<datalist id="browsers">
+  <option value="Chrome">
+  <option value="Firefox">
+</datalist>
+<br>
+<select name="status">
+  <option value="active">Active</option>
+  <option value="inactive" disabled>Inactive</option>
+</select>
+<br>
+<select name="countries">
+  <optgroup label="Europe">
+    <option value="france">France</option>
+    <option value="germany">Germany</option>
+  </optgroup>
+  <optgroup label="Asia">
+    <option value="japan">Japan</option>
+  </optgroup>
+</select>
+</body>
+</html>
