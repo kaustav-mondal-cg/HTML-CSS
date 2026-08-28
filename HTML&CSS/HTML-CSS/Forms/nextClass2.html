@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="/submit" method="_blank"
+      enctype="application/x-www-form-urlencoded">
+  <input type="text" name="username">
+  <input type="email" name="email">
+
+  <button type="submit">Submit</button>
+
+  <input type="file" name="file" id="" multiple>
+</form>
+<form action="/upload" method="post"
+      enctype="multipart/form-data">
+
+  <input type="text" name="username">
+
+  <input type="file" name="resume">
+
+  <button type="submit">Upload</button>
+ <input type="text" pattern="[^abc]">
+
+</form>
+</body>
+</html>
